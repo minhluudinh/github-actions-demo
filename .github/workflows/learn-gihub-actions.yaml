@@ -26,3 +26,4 @@ jobs:
         run: npm install -g bats && bats -v && echo "hello github actions from ubuntu, $myName"
         env:
           myName: Minh
+      - run: echo $PATH
