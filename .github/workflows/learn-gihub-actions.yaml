@@ -21,7 +21,8 @@ jobs:
     name: check-bats # jobs.<job_id>.name, name = check-bats
     runs-on: ubuntu-latest # jobs.<job_id>.runs-on
     environment:
-      name: prod
+      name: dev
+      url: http://github.com
     steps:
 
       - name: checkout step
