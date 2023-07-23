@@ -23,8 +23,7 @@ jobs:
         with:
           node-version: 14
       - name: install bats
-        run: npm install -g bats
-      - run: bats -v
+        run: npm install -g bats && bats -v
       - run: echo "hello github actions from ubuntu, $myName"
         env:
           myName: Minh
