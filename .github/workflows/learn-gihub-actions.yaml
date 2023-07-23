@@ -6,24 +6,36 @@ name: learn-github-actions
 #
 run-name: ${{ github.actor }} is learning Github learn-github-actions
 
+# only trigger this workflow when there is a push action to branches: main, dev.
 on:
   push:
+  # pull_request
     branches:
       - main
+      - dev
+
 
 # group together all jobs that run in the learn-github-actions workflow.
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  check-bats-version: # jobs.<job_id>, job_id = check-bats-version
+    name: check-bats # jobs.<job_id>.name, name = check-bats
+    runs-on: ubuntu-latest # jobs.<job_id>.runs-on
+    environment:
+      name: dev
     steps:
+
       - name: checkout step
         uses: actions/checkout@v3
+
       - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
+
       - name: install bats
         run: npm install -g bats && bats -v && echo "hello github actions from ubuntu, $myName"
         env:
-          myName: Minh
+          myName: ${{ vars.USER }}
+
+      # a step without a name
       - run: echo $PATH
