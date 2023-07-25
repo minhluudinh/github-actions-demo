@@ -3,17 +3,23 @@
 name: learn-github-actions
 
 # Optional
-#
 run-name: ${{ github.actor }} is learning Github learn-github-actions
-
 # only trigger this workflow when there is a push action to branches: main, dev.
+
 on:
   push:
-  # pull_request
     branches:
       - main
       - dev
+      - staging
+  # pull_request
+  # - main
+  # - dev
+  # - staging
 
+# define variables for global scope
+env:
+  globalVar: "Global variable"
 
 # group together all jobs that run in the learn-github-actions workflow.
 jobs:
@@ -23,20 +29,25 @@ jobs:
     environment:
       name: dev
       url: http://github.com
+    env:
+      jobVar: "Job-scoped variable"
     steps:
-
+      # step 1
       - name: checkout step
         uses: actions/checkout@v3
 
+      # step 2
       - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
 
+      # step 3
       - name: install bats
         run: npm install -g bats && bats -v && echo "hello github actions from ubuntu, $myName"
         env:
           myName: ${{ vars.USER }}
+          stepVar: "step variable"
 
-      # a step without a name
+      # step 4, a step without a name
       - run: echo $PATH
