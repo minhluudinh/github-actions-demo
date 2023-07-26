@@ -59,4 +59,4 @@ jobs:
       # step 4, a step without a name
       - run: echo $PATH
       - name: what is the secret?
-        run: echo "my secret is ${{secrets.MySecret}}"
+        run: echo "my secret is ${{ secrets.MySecret }}"
