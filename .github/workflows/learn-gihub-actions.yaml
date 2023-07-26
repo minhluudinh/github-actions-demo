@@ -61,4 +61,4 @@ jobs:
       - name: what is the secret?
         run: echo "my secret is ${{ env.secret }}"
         env:
-          secret: ${{ secrets.MySecret }}
+          secret: ${{ secrets.MYSECRET }}
