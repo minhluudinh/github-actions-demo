@@ -46,9 +46,10 @@ jobs:
 
       # step 3
       - name: install bats
-        run:
-          npm install -g bats && bats -v && echo "hello github actions from ubuntu,
-          $myName, ${{ env.commonVar }}"
+        run: npm install -g bats && bats -vle"
+
+      - name: logging
+        run: echo "hello github actions from ubuntu, $myName, ${{ env.commonVar }}"
         env:
           myName: ${{ vars.USER }}
           stepVar: "step variable"
