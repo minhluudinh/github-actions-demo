@@ -50,6 +50,7 @@ jobs:
 
       - name: logging
         run: echo "hello github actions from ubuntu, $myName, ${{ env.commonVar }}"
+
         env:
           myName: ${{ vars.USER }}
           stepVar: "step variable"
@@ -57,3 +58,5 @@ jobs:
 
       # step 4, a step without a name
       - run: echo $PATH
+      - name: what is the secret?
+        run: echo "my secret is ${{secrets.MySecret}}"
