@@ -20,6 +20,7 @@ on:
 # define variables for global scope
 env:
   globalVar: "Global variable"
+  commonVar: "Global common variable"
 
 # group together all jobs that run in the learn-github-actions workflow.
 jobs:
@@ -31,6 +32,7 @@ jobs:
       url: http://github.com
     env:
       jobVar: "Job-scoped variable"
+      commonVar: "Job common variable"
     steps:
       # step 1
       - name: checkout step
@@ -44,10 +46,13 @@ jobs:
 
       # step 3
       - name: install bats
-        run: npm install -g bats && bats -v && echo "hello github actions from ubuntu, $myName"
+        run:
+          npm install -g bats && bats -v && echo "hello github actions from ubuntu,
+          $myName, ${{ env.commonVar }}"
         env:
           myName: ${{ vars.USER }}
           stepVar: "step variable"
+          commonVar: "Step common variable"
 
       # step 4, a step without a name
       - run: echo $PATH
