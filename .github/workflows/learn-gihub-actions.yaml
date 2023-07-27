@@ -47,7 +47,7 @@ jobs:
         run: npm install -g bats && bats -v
 
       - name: logging
-        run: |
+        run: >
           echo "hello github actions from ubuntu, $myName, ${{ env.COMMON_VAR }}"
           echo "Hello line 2"
         env:
