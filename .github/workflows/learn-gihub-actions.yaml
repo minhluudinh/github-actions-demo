@@ -44,10 +44,12 @@ jobs:
 
       # step 3
       - name: install bats
+        # single line command
         run: npm install -g bats && bats -v
 
       - name: logging
-        run: >
+        # multiple line command
+        run: |
           echo "hello github actions from ubuntu, $myName, ${{ env.COMMON_VAR }}"
           echo "Hello line 2"
         env:
@@ -55,6 +57,8 @@ jobs:
           stepVar: "step variable"
           commonVar: "Step common variable"
           COMMON_VAR: "step"
+        # specify where to store the working directory.
+        working-directory: ./temp
 
       # step 4, a step without a name
       - run: echo $PATH
