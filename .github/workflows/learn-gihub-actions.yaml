@@ -58,7 +58,7 @@ jobs:
           commonVar: "Step common variable"
           COMMON_VAR: "step"
         # specify where to store the working directory.
-        working-directory: ./temp
+        # working-directory: ./temp
 
       # step 4, a step without a name
       - run: echo $PATH
